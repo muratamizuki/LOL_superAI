@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 
 # チャンピオン名とIDの対応リストを辞書に変換
 champion_dict = {
+    "":0,
     "アニー": 1,
     "オラフ": 2,
     "ガリオ": 3,
@@ -237,7 +238,7 @@ with left_col:
     st.header("BLUEチーム")
     roles = ["TOP", "JG", "MID", "ADC", "SUP"]
     for i, role in enumerate(roles):
-        champion_name = st.text_input(f"{role}", key=f"left{i}")
+        champion_name = st.selectbox(f"{role}", champion_names, key=f"left{i}")
         champion_id = get_champion_id(champion_name)
         if champion_id != "チャンピオンが見つかりません":
             champion_ids_100.append(champion_id)
@@ -246,7 +247,7 @@ with right_col:
     st.header("REDチーム")
     roles = ["TOP", "JG", "MID", "ADC", "SUP"]
     for i, role in enumerate(roles):
-        champion_name = st.text_input(f"{role}", key=f"right{i}")
+        champion_name = st.selectbox(f"{role}", champion_names, key=f"right{i}")
         champion_id = get_champion_id(champion_name)
         if champion_id != "チャンピオンが見つかりません":
             champion_ids_200.append(champion_id)
